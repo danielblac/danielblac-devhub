@@ -1,6 +1,3 @@
-import Footer from "@/components/organisms/footer/footer";
-import Header from "@/components/organisms/header/Header";
-
 interface layoutProps {
   children: React.ReactNode;
 }
