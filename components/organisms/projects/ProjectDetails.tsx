@@ -1,11 +1,12 @@
-interface IProps {
-  query: string;
-}
+// interface IProps {
+//   query: string;
+// }
 
-export default function ProjectDetails({ query }: IProps) {
+export default function ProjectDetails(/* { query }: IProps */) {
   return (
     <div style={{ padding: "10em 3em" }}>
-      <p>{query}</p>
+      <p>1</p>
+      {/* <p>{query}</p> */}
     </div>
   );
 }
