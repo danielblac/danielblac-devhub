@@ -1,11 +1,13 @@
 import ProjectDetails from "@/components/organisms/projects/ProjectDetails";
 
-export default async function ProjectDetailsPage({
-  params,
-}: {
-  params: { projectId: string };
-}) {
-  const { projectId } = await params;
+interface PageProps {
+  params: {
+    projectId: string;
+  };
+}
+
+export default function ProjectDetailsPage({ params }: PageProps) {
+  const { projectId } = params;
 
   return (
     <>
