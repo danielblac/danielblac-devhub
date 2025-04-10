@@ -1,17 +1,13 @@
 import ProjectDetails from "@/components/organisms/projects/ProjectDetails";
 
-interface PageProps {
-  params: {
-    projectId: string;
-  };
-}
-
-export default function ProjectDetailsPage({ params }: PageProps) {
-  const { projectId } = params;
-
+export default function ProjectDetailsPage({
+  params,
+}: {
+  params: { projectId: string };
+}) {
   return (
     <>
-      <ProjectDetails query={projectId} />
+      <ProjectDetails query={params.projectId} />
     </>
   );
 }
