@@ -8,7 +8,7 @@ import {
 } from "@mui/material";
 import { ExpandMore } from "@mui/icons-material";
 import Image from "next/image";
-import { Button } from "@/components/atoms/Button";
+import Trusted from "@/components/molecules/Trusted";
 
 export default function Faq() {
   return (
@@ -331,13 +331,7 @@ export default function Faq() {
         </div>
       </div>
 
-      <div className="trusted">
-        <h3>
-          Affordable, reliable, and trusted by businesses to bring their ideas
-          to life.
-        </h3>
-        <Button padding="0.65em 1em">Get in Touch</Button>
-      </div>
+      <Trusted />
     </div>
   );
 }

@@ -1,6 +1,7 @@
 "use client";
 import ServicesTech from "@/components/molecules/home/ServicesTech";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { BsGlobe } from "react-icons/bs";
 import { FaCode } from "react-icons/fa6";
@@ -13,6 +14,7 @@ export default function Services() {
   const [devOps, setDevOps] = useState(false);
   const [uiuxDesign, setUiuxDesign] = useState(false);
   const [grahipcsDesign, setGrahipcsDesign] = useState(false);
+  const router = useRouter();
 
   const settings = {
     infinite: true,
@@ -28,7 +30,7 @@ export default function Services() {
   };
 
   return (
-    <div className="services">
+    <div className="services" id="services">
       <h2 className="services-header">Our Services</h2>
 
       <div className="service-nav">
@@ -137,7 +139,10 @@ export default function Services() {
                 </p>
 
                 <p className="service-website-link">
-                  Need a website? <span>Get in Touch</span>
+                  Need a website?{" "}
+                  <span onClick={() => router.push("/contact")}>
+                    Get in Touch
+                  </span>
                 </p>
               </div>
             </>

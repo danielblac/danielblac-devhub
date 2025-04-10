@@ -8,18 +8,18 @@ export default function Footer() {
       <div className="footer-content">
         <div className="web-links">
           <div className="same-page">
-            <Link href="#">
+            <Link href="/#about">
               <p>About Us</p>
             </Link>
-            <Link href="#">
+            <Link href="/#services">
               <p>Services</p>
             </Link>
           </div>
           <div className="same-page">
-            <Link href="#">
+            <Link href="/projects">
               <p>Projects</p>
             </Link>
-            <Link href="#">
+            <Link href="/contact">
               <p>Contact Us</p>
             </Link>
           </div>

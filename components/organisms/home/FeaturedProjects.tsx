@@ -1,74 +1,10 @@
 "use client";
-import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { FaCommentAlt, FaHeart } from "react-icons/fa";
 import { IoEyeSharp } from "react-icons/io5";
 import Slider from "react-slick";
-import { useInView } from "react-intersection-observer";
 
 export default function FeaturedProjects() {
-  const [isScrollLocked, setIsScrollLocked] = useState(false);
-  const carouselRef = useRef<HTMLDivElement>(null);
-
-  const [carouselInViewRef, carouselInView] = useInView({
-    threshold: 1,
-    triggerOnce: true,
-  });
-
-  useEffect(() => {
-    if (carouselInView) {
-      setIsScrollLocked(true);
-
-      const carouselBottom =
-        carouselRef.current!.offsetTop + carouselRef.current!.offsetHeight;
-      const start = window.scrollY;
-      const distance = carouselBottom - window.innerHeight - start;
-      const duration = 1000;
-      let startTime: number;
-
-      const animateScroll = (timestamp: number) => {
-        if (!startTime) startTime = timestamp;
-        const progress = timestamp - startTime;
-        const percentage = Math.min(progress / duration, 1);
-        window.scrollTo(0, start + distance * percentage);
-
-        if (progress < duration) {
-          requestAnimationFrame(animateScroll);
-        }
-      };
-
-      requestAnimationFrame(animateScroll);
-
-      // Release the scroll lock after 7 seconds
-      const timeout = setTimeout(() => {
-        setIsScrollLocked(false);
-      }, 7000);
-
-      return () => clearTimeout(timeout);
-    }
-  }, [carouselInView]);
-
-  useEffect(() => {
-    const handleScroll = (e: Event) => {
-      if (isScrollLocked) {
-        e.preventDefault();
-
-        const carouselBottom =
-          carouselRef.current!.offsetTop + carouselRef.current!.offsetHeight;
-        window.scrollTo(0, carouselBottom - window.innerHeight);
-      }
-    };
-
-    if (isScrollLocked) {
-      window.addEventListener("scroll", handleScroll, { passive: false });
-    } else {
-      window.removeEventListener("scroll", handleScroll);
-    }
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [isScrollLocked]);
 
   const settings = {
     dots: true,
@@ -84,7 +20,7 @@ export default function FeaturedProjects() {
   };
 
   return (
-    <div className="featured-projects" ref={carouselRef}>
+    <div className="featured-projects">
       <Image
         src="/images/projects-bubble.png"
         alt="logo"
@@ -99,7 +35,6 @@ export default function FeaturedProjects() {
         </p>
 
         <div className="project-carousel">
-          <div ref={carouselInViewRef} />
           <Slider {...settings}>
             <div className="indiv-project">
               <Image

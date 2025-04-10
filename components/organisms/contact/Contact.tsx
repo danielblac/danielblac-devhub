@@ -1,19 +1,22 @@
 "use client";
 
+import { Button } from "@/components/atoms/Button";
 import { CircularProgress, TextField } from "@mui/material";
-import Head from "next/head";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { FormEvent, useEffect, useState } from "react";
+import {
+  FaInstagram,
+  FaLinkedinIn,
+  FaPhone,
+  FaXTwitter,
+} from "react-icons/fa6";
 import { IoMdMailUnread } from "react-icons/io";
-import { IoLocationSharp } from "react-icons/io5";
-import { PiPhoneCallFill } from "react-icons/pi";
 
 export default function Contact() {
   // DECLARATIONS
-  const pathname = usePathname();
   const [formData, setFormData] = useState({
-    full_name: "",
+    first_name: "",
+    last_name: "",
     email: "",
     message: "",
   });
@@ -36,80 +39,106 @@ export default function Contact() {
   }, [isSuccessful]);
 
   return (
-    <>
-      <Head>
-        <title>Split Delivery | Contact</title>
-      </Head>
-      <div className="contact-page">
-        <div className="contact-message">
-          {pathname === "/contact" ? (
-            <h1>Contact us for assistance or information of any kind</h1>
-          ) : (
-            <h1>Didn&apos;t find what you are looking for?</h1>
-          )}
-
+    <div className="contact">
+      <div className="contact-top"></div>
+      <div className="contact-details">
+        <div className="contact-header">
+          <h2>Let’s Get in Touch.</h2>
           <p>
-            We are happy to hear from you. So please contact our customer
-            service by phone, chat, or visit our local branch.
+            Ready to elevate your business or learn new tech skills? We're here
+            to help. Reach out to us today, and let’s start creating something
+            amazing.
           </p>
-          <div className="contact-info-icon">
-            <div className="contact-icon">
-              <IoLocationSharp />
-            </div>
-            <p>Horizon Financials Business Location</p>
-          </div>
-          <p>Atlanta, USA</p>
 
           <div className="contact-info-icon">
             <div className="contact-icon">
-              <PiPhoneCallFill />
+              <FaPhone size={20} />
             </div>
-            <p>Call for Assistance</p>
+            <Link href="tel:+2349055316606">
+              <p>+234 905531666</p>
+            </Link>
           </div>
-          <Link href="tel:+17806044764">
-            <p>+1 (780)604 4764</p>
-          </Link>
 
           <div className="contact-info-icon">
             <div className="contact-icon">
-              <IoMdMailUnread />
+              <IoMdMailUnread size={24} />
             </div>
-            <p>Mail Us For Information</p>
+            <Link href="mailto:daniel_blac@yahoo.com">
+              <p>daniel_blac@yahoo.com</p>
+            </Link>
           </div>
-          <Link href="mailto:info@horizonfinancials.net">
-            <p>info@horizonfinancials.net</p>
-          </Link>
-          <Link href="mailto:services@horizonfinancials.net">
-            <p>services@horizonfinancials.net</p>
-          </Link>
+
+          <div className="socials">
+            <Link
+              href="https://linkedin.com/in/daniel-egboro-ebipamowei"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaLinkedinIn size={23} className="social-icon" />
+            </Link>
+            <Link
+              href="https://linkedin.com/in/daniel-egboro-ebipamowei"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaInstagram size={22} className="social-icon" />
+            </Link>
+            <Link
+              href="https://linkedin.com/in/daniel-egboro-ebipamowei"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaXTwitter size={22} className="social-icon" />
+            </Link>
+          </div>
         </div>
         <div className="contact-form">
-          <h4>Drop us a message</h4>
-          <p>All fields are required</p>
+          <div className="form-header">
+            <p>Contact Us</p>
+          </div>
 
           <form onSubmit={handleSubmit}>
-            <TextField
-              id="outlined-basic"
-              label="Name"
-              variant="outlined"
-              placeholder="E.g John Doe"
-              required
-              fullWidth
-              color="secondary"
-              value={formData.full_name}
-              onChange={(e) =>
-                setFormData({
-                  ...formData,
-                  full_name: e.target.value,
-                })
-              }
-            />
+            <div className="divide-forms">
+              <TextField
+                id="outlined-basic"
+                label="First Name"
+                variant="outlined"
+                placeholder="Enter your first name"
+                required
+                fullWidth
+                color="secondary"
+                value={formData.first_name}
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    first_name: e.target.value,
+                  })
+                }
+              />
+              <TextField
+                id="outlined-basic"
+                label="Last Name"
+                variant="outlined"
+                placeholder="Enter your last name"
+                required
+                fullWidth
+                color="secondary"
+                value={formData.last_name}
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    last_name: e.target.value,
+                  })
+                }
+              />
+            </div>
 
             <TextField
               id="outlined-basic"
               label="Email"
               variant="outlined"
-              placeholder="E.g John Doe"
+              placeholder="Enter your email"
+              type="email"
               required
               fullWidth
               color="secondary"
@@ -126,11 +155,11 @@ export default function Contact() {
               id="outlined-multiline-static"
               label="Message"
               multiline
-              rows={5}
+              rows={8}
               required
-              placeholder="Enter Messahe Here..."
+              placeholder="Enter Message Here..."
               fullWidth
-              // color="secondary"
+              color="secondary"
               value={formData.message}
               onChange={(e) =>
                 setFormData({
@@ -140,32 +169,16 @@ export default function Contact() {
               }
             />
 
-            <button type="submit">
+            <Button type="submit">
               {loading ? (
                 <CircularProgress color="inherit" size={20} thickness={5} />
               ) : (
-                "Send"
+                <span>Send</span>
               )}
-            </button>
+            </Button>
           </form>
         </div>
-        {/* {isSuccessful && (
-          <AnimatePresence>
-            <motion.div
-              variants={menuVarient}
-              initial="hidden"
-              animate="visible"
-              exit="exit"
-              className="success-msg"
-            >
-              <Alert severity="success">
-                <AlertTitle>Success</AlertTitle>
-                Message was sent successfully.
-              </Alert>
-            </motion.div>
-          </AnimatePresence>
-        )} */}
       </div>
-    </>
+    </div>
   );
 }

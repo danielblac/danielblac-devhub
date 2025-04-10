@@ -10,6 +10,7 @@ import {
   wrap,
 } from "framer-motion";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { ReactNode, useRef } from "react";
 import { FaDev } from "react-icons/fa";
 import { LuPenTool } from "react-icons/lu";
@@ -60,6 +61,8 @@ function ParallaxText({ children, baseVelocity = 100 }: ParallaxProps) {
 }
 
 export default function ServicesTech() {
+  const router = useRouter();
+
   return (
     <div className="services-tech">
       <div className="dev-stack">
@@ -209,7 +212,10 @@ export default function ServicesTech() {
             </div>
           </ParallaxText>
 
-          <div className="dev-stack-link">
+          <div
+            className="dev-stack-link"
+            onClick={() => router.push("/tech-stack")}
+          >
             <p>
               <span>+16</span> others
             </p>
@@ -308,7 +314,9 @@ export default function ServicesTech() {
         <div className="dev-speed">
           <div className="speed-header">
             <p>Super-fast development time</p>
-            <Button>Get in Touch</Button>
+            <Button onClick={() => router.push("/contact")}>
+              Get in Touch
+            </Button>
           </div>
           <p className="speed-message">
             We help you create stunning websites in record time—optimized for

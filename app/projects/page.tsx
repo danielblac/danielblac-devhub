@@ -1,8 +1,9 @@
+import Projects from "@/components/organisms/projects/Projects";
 
 function ProjectsPage() {
   return (
     <>
-      <h1>Projects</h1>
+      <Projects />
     </>
   );
 }

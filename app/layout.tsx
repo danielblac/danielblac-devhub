@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.scss";
+import MUIProvider from "./material-ui/provider";
+import { AuthProvider } from "./next-auth/provider";
 
 export const metadata: Metadata = {
   title: "DanielBlac DevHub",
@@ -28,7 +30,11 @@ export default function RootLayout({
           sizes="<generated>"
         />
       </head>
-      <body>{children}</body>
+      <body>
+        <AuthProvider>
+          <MUIProvider>{children}</MUIProvider>
+        </AuthProvider>
+      </body>
     </html>
   );
 }

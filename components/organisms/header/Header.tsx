@@ -28,7 +28,14 @@ export default function Header() {
       <header className="header">
         <Link href="/">
           <div className="logo">
-            <Image src="/images/logo.jpg" alt="logo" width={35} height={35} />
+            <Image
+              src="/images/logo.jpg"
+              alt="DanielBlac DevHub Logo"
+              width={35}
+              height={35}
+              priority
+              quality={85}
+            />
             <p>DanielBlac DevHub</p>
           </div>
         </Link>
@@ -77,7 +84,7 @@ export default function Header() {
                   <Link href="/">
                     <p>:Home</p>
                   </Link>
-                  <Link href="/services">
+                  <Link href="/#services">
                     <p>:Services</p>
                   </Link>
                   <Link href="/projects">
@@ -103,7 +110,7 @@ export default function Header() {
                 <FaBars size={18} onClick={() => setIsMobileOpen(true)} />
               )}
             </div>
-            <Button>
+            <Button onClick={() => router.push("/contact")}>
               <span>Get in Touch</span>
             </Button>
           </div>
@@ -118,7 +125,7 @@ export default function Header() {
                 <FaBars size={18} onClick={() => setIsMobileOpen(true)} />
               )}
             </div>
-            <Button>
+            <Button onClick={() => router.push("/contact")}>
               <span>Get in Touch</span>
             </Button>
           </div>
@@ -139,7 +146,14 @@ export default function Header() {
               }}
               className="logo"
             >
-              <Image src="/images/logo.jpg" alt="logo" width={35} height={35} />
+              <Image
+                src="/images/logo.jpg"
+                alt="DanielBlac DevHub Logo"
+                width={35}
+                height={35}
+                priority
+                quality={85}
+              />
               <p>DanielBlac DevHub</p>
             </div>
           </div>
@@ -162,7 +176,7 @@ export default function Header() {
             </div>
             <div
               onClick={() => {
-                router.push("/services");
+                router.push("/#services");
                 setIsMobileOpen(false);
               }}
               className={

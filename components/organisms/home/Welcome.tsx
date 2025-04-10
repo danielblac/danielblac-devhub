@@ -1,6 +1,10 @@
+"use client";
 import { Button } from "@/components/atoms/Button";
+import { useRouter } from "next/navigation";
 
 export default function Welcome() {
+  const router = useRouter();
+
   return (
     <div className="welcome">
       <div className="welcome-header">
@@ -14,7 +18,7 @@ export default function Welcome() {
           needs, ensuring that your digital presence is both functional and
           user-centric.
         </p>
-        <Button padding="0.75em 1em">
+        <Button padding="0.75em 1em" onClick={() => router.push("/contact")}>
           <span>Get in Touch</span>
         </Button>
       </div>

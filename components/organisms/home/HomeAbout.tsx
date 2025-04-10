@@ -7,8 +7,10 @@ import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { InView } from "react-intersection-observer";
 import { useRef } from "react";
+import { useRouter } from "next/navigation";
 
 export default function HomeAbout() {
+  const router = useRouter();
   const textRef = useRef<HTMLParagraphElement>(null);
   const { scrollYProgress } = useScroll({
     target: textRef,
@@ -24,7 +26,7 @@ export default function HomeAbout() {
   const words = text.split(" "); // Split by spaces
 
   return (
-    <div className="home-about">
+    <div className="home-about" id="about">
       <Image
         src="/images/about-bubble.png"
         alt="logo"
@@ -94,7 +96,7 @@ export default function HomeAbout() {
           </div>
         </div>
 
-        <Button padding="0.7em 1.5em">
+        <Button padding="0.7em 1.5em" onClick={() => router.push("/contact")}>
           <span>Let&apos;s Talk</span>
           <MdOutlineKeyboardArrowRight size={24} />
         </Button>

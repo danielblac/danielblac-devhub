@@ -3,10 +3,9 @@ import { useEffect, useState } from "react";
 
 interface IProps {
   file: File;
-  type: string;
 }
 
-export default function ProfileImage({ file, type }: IProps) {
+export default function ProfileImage({ file }: IProps) {
   const [fileUrl, setFileUrl] = useState<string | null>(null);
 
   useEffect(() => {
@@ -23,12 +22,5 @@ export default function ProfileImage({ file, type }: IProps) {
     return <p>Loading...</p>;
   }
 
-  return (
-    <Image
-      src={fileUrl}
-      alt="profile-img"
-      width={type === "receipt" ? 200 : 140}
-      height={type === "receipt" ? 200 : 140}
-    />
-  );
+  return <Image src={fileUrl} alt="profile-img" width={300} height={200} />;
 }
